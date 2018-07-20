@@ -326,6 +326,14 @@ def md5sum(filename):
     else:
         return ""
 
+def md5text(text):
+    """
+    md5text - Returns the md5 of the text
+    """
+    hash = hashlib.md5()
+    hash.update(text)
+    return hash.hexdigest()
+
 
 def filehaschanged(filename, filemd5="", updatemd5=False):
     """
