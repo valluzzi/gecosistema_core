@@ -21,7 +21,7 @@
 #
 # Created:     27/12/2012
 # -----------------------------------------------------------------------------
-import os,sys
+import os,sys,re
 import shutil
 import datetime
 import hashlib
