@@ -24,7 +24,7 @@
 # -----------------------------------------------------------------------------
 from .filesystem import *
 from .strings import *
-
+from jinja2 import Environment, FileSystemLoader
 
 def webpath(filename, pivot ):
     """
