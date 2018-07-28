@@ -78,7 +78,7 @@ def httpPage(environ, start_response=None, checkuser=False):
     httpPage - return a Html Page
     """
 
-    url = environ["url"] if "url" in environ else normpath(environ["SCRIPT_FILENAME"]))
+    url = environ["url"] if "url" in environ else normpath(environ["SCRIPT_FILENAME"])
     url = forceext(url, "html")
     #root   = environ["ROOTDIR"] if "ROOTDIR" in environ else ""
     DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else ""
