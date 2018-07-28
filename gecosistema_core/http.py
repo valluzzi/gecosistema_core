@@ -25,6 +25,7 @@
 from .filesystem import *
 from .strings import *
 from jinja2 import Environment, FileSystemLoader
+import os,sys,math
 
 def webpath(filename, pivot ):
     """
@@ -77,7 +78,7 @@ def httpPage(environ, start_response=None, checkuser=False):
     """
     httpPage - return a Html Page
     """
-
+    import gecosistema_core
     url = environ["url"] if "url" in environ else normpath(environ["SCRIPT_FILENAME"])
     url = forceext(url, "html")
     #root   = environ["ROOTDIR"] if "ROOTDIR" in environ else ""
