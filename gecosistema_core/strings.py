@@ -238,11 +238,13 @@ def split(text, sep=" ", glue="'", removeEmpty=False):
     res = []
     word = ""
     dontsplit = False
+    lookahead = len(sep)
     for j in range(0, len(text)):
         c = text[j]
+        ca = text[j:j+lookahead]
         if c in glue:
             dontsplit = not dontsplit
-        if c in sep and not dontsplit:
+        if ca == sep and not dontsplit:
             res.append(word)
             word = ""
         else:
