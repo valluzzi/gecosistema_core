@@ -26,3 +26,4 @@ from .filesystem import *
 from .strings import *
 from .execution import *
 from .http import *
+from .xml_utils import *

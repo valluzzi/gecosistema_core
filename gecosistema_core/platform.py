@@ -14,7 +14,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-# Name:        filesystem
+# Name:        platform
 # Purpose:
 #
 # Author:      Luzzi Valerio
