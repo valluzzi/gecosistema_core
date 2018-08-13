@@ -45,6 +45,14 @@ def isnumeric(text):
     match =  re.match("^[-+]?((\d+(\.\d*)?)|(\d*\.\d+))([eE][-+]?\d+)?$", text.strip())
     return True if match else False
 
+def isquery(text):
+    """
+    isquery
+    """
+    pattern = r'^\s*((SELECT|PRAGMA|INSERT|DELETE|REPLACE|UPDATE|CREATE).*)'
+    res = re.match(pattern, text, re.IGNORECASE)
+    return True if res else False
+
 def sformat(text, args):
     """
     sformat
