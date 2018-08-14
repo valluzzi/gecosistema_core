@@ -140,7 +140,6 @@ def filetoarray(filename):
     except:
         return []
 
-
 def filesize(filename):
     """
     filesize

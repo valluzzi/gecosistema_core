@@ -119,3 +119,24 @@ def httpPage(environ, start_response=None, checkuser=False):
     }
     html = t.render(variables).encode("utf-8","replace")
     return httpResponseOK(html, start_response)
+
+def check_user_permissions(environ):
+    """
+    check_user_permissions
+    """
+    DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else leftpart(normpath(__file__), "/apps/")
+    filedb = DOCUMENT_ROOT + "/projects/htaccess.txt"
+    HTTP_COOKIE = environ["HTTP_COOKIE"] if "HTTP_COOKIE" in environ else ""
+
+    if file(filedb):
+        HTTP_COOKIE = mapify(HTTP_COOKIE, ";")
+        #db = SqliteDB(filedb, modules=["math.so"])
+        #user_enabled = db.execute("""
+        #    SELECT COUNT(*) FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now'));
+        #    """, HTTP_COOKIE, outputmode="scalar", verbose=False)
+        #db.close()
+
+
+        return user_enabled
+
+    return False

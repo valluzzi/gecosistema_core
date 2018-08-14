@@ -26,6 +26,21 @@ import json
 from xmljson import yahoo as bf
 from xml.etree.ElementTree import fromstring
 
+
+def parsejson(filename):
+    """
+    parsejson
+    """
+    if isinstance(filename, (dict)):
+        return filename
+    elif isfile(filename):
+        text = filetostr(filename)
+    elif isstring(filename):
+        text = filename
+    else:
+        return {}
+    return json.loads(text)
+
 # -------------------------------------------------------------------------------
 #   parsexml
 # -------------------------------------------------------------------------------
