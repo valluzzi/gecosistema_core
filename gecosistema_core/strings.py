@@ -349,9 +349,3 @@ def val(text):
 
 
 
-
-
-
-if __name__ == '__main__':
-    for text in ["3","2a","a3","3.5e-6","+4","-3.",".",".3","3.",""]:
-        print text,isnumeric(text)
