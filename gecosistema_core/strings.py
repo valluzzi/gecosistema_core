@@ -24,6 +24,7 @@
 # -----------------------------------------------------------------------------
 import re
 import six
+import random
 
 def isstring(var):
     """
@@ -182,6 +183,12 @@ def rightpart(text, sep):
         return [rightpart(item, sep) for item in text]
     return ""
 
+def tempname(prefix="", postfix="", ext=""):
+    """
+    tempname -returns a temporary name
+    """
+    uid = random.randint(0,1e6)
+    return forceext("%s%s%s"%(prefix,uid,postfix), ext)
 
 def textin(text, prefix, postfix, casesensitive=True):
     """

@@ -85,9 +85,9 @@ def httpPage(environ, start_response=None, checkuser=False):
     DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else ""
     HTTP_COOKIE   = environ["HTTP_COOKIE"]   if "HTTP_COOKIE"   in environ else ""
 
-    #if checkuser and not check_user_permissions(environ):
-    #    environ["url"] = "back.html"
-    #    return httpPage(environ, start_response)
+    if checkuser and not check_user_permissions(environ):
+        environ["url"] = "back.html"
+        return httpPage(environ, start_response)
 
     if "__file__" in environ:
         chdir(justpath( environ["__file__"]))
@@ -135,8 +135,10 @@ def check_user_permissions(environ):
         #    SELECT COUNT(*) FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now'));
         #    """, HTTP_COOKIE, outputmode="scalar", verbose=False)
         #db.close()
-
-
-        return user_enabled
+        db = parsejson(filedb)
+        users = db["users"]
+        for user in users:
+            if md5text("%s%s"%(user["token"],strftime('%Y-%m-%d','now'))) == lower(HTTP_COOKIE["__token__"]):
+                return True
 
     return False
