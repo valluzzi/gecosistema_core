@@ -24,6 +24,6 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ),
-    install_requires=['jinja2', 'future', 'six', 'argparse', 'xmljson', 'pyodbc',
+    install_requires=['jinja2', 'future', 'six', 'argparse', 'xmljson',
                       'openpyxl', 'xlrd', 'xlwt', 'xlutils' ]
 )
