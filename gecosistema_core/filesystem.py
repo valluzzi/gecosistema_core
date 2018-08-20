@@ -364,7 +364,6 @@ def b64(filename):
 
 
 if __name__ == '__main__':
-    workdir = r"D:\Users\vlr20\Projects\BitBucket\OpenSITUA\apps\common\lib\js\corex"
+    workdir = r"D:\Users\vlr20\Projects\BitBucket\OpenSITUA\apps\common"
     chdir(workdir)
-    filename= "hello.txt"
-    print(safename(filename))
+    print(listdir(workdir))
