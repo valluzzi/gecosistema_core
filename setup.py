@@ -3,8 +3,9 @@ import setuptools
 
 version ="0.0.0"
 
-print("Current working dir is:"+os.getcwd())
 
+workdir,_ = os.path.split(__file__)
+os.chdir(workdir)
 if os.path.isfile("version.txt"):
     with open("version.txt", "r") as f:
         version = f.read()

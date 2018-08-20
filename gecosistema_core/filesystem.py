@@ -65,7 +65,7 @@ def justpath(pathname, n=1):
     justpath
     """
     for j in range(n):
-        (pathname, tail) = os.path.split(normpath(pathname))
+        (pathname, _) = os.path.split(normpath(pathname))
     return normpath(pathname)
 
 def justfname(pathname):
