@@ -96,6 +96,12 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
         print("Done in %ss." % ((t2 - t1).total_seconds()))
     return res
 
+def EXEC(command):
+    """
+    shortcut for Exec
+    """
+    return Exec(command)
+
 def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False, verbose=False):
     """
     Python
