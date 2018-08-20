@@ -1,11 +1,7 @@
 import os
 import setuptools
 
-version ="0.0.0"
-
-workdir = os.path.dirname(__file__)
-if workdir:
-    os.chdir(workdir)
+version ="0.0.28"
 
 if os.path.isfile("version.txt"):
     with open("version.txt", "r") as f:
