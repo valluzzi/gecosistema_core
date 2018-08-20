@@ -2,7 +2,11 @@ import os
 import setuptools
 
 version ="0.0.0"
-os.chdir(os.path.dirname(__file__))
+
+workdir = os.path.dirname(__file__)
+if workdir:
+    os.chdir(workdir)
+
 if os.path.isfile("version.txt"):
     with open("version.txt", "r") as f:
         version = f.read()
