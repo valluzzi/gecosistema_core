@@ -4,7 +4,8 @@ import setuptools
 version ="0.0.0"
 
 
-workdir,_ = os.path.split(__file__)
+workdir, _ = os.path.split(__file__)
+print(workdir)
 os.chdir(workdir)
 if os.path.isfile("version.txt"):
     with open("version.txt", "r") as f:
