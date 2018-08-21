@@ -21,7 +21,7 @@
 #
 # Created:     27/07/2018
 # -----------------------------------------------------------------------------
-import os,sys
+import os,sys,time
 
 def isWindows():
     """
@@ -71,9 +71,17 @@ def safename(filename, additional_chars=r''):
 
     return filename
 
+def pause():
+    """
+    pause
+    """
+    os.system.pause()
 
-
-
+def sleep(s):
+    """
+    sleep
+    """
+    time.sleep(s)
 
 if __name__ == '__main__':
     workdir = r"D:\Users\vlr20\Projects\BitBucket\OpenSITUA\apps\common\lib\js\corex"
