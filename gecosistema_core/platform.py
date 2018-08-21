@@ -76,12 +76,19 @@ def pause():
     pause
     """
     os.system("pause")
-    
+
 def sleep(s):
     """
     sleep
     """
     time.sleep(s)
+
+def setenv(varname, value):
+    """
+    setenv
+    """
+    os.environ[varname] = value
+
 
 if __name__ == '__main__':
     workdir = r"D:\Users\vlr20\Projects\BitBucket\OpenSITUA\apps\common\lib\js\corex"
