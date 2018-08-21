@@ -75,8 +75,8 @@ def pause():
     """
     pause
     """
-    os.system.pause()
-
+    os.system("pause")
+    
 def sleep(s):
     """
     sleep
