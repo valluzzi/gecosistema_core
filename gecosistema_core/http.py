@@ -26,6 +26,7 @@ from .filesystem import *
 from .strings import *
 from jinja2 import Environment, FileSystemLoader
 import os,sys,math
+import unicode,json
 
 def webpath(filename, pivot ):
     """
@@ -73,6 +74,18 @@ def httpResponseNotFound(start_response):
     httpResponseNotFound
     """
     return httpResponse("404 NOT FOUND", "404 NOT FOUND", start_response)
+
+def JSONResponse(obj, start_response):
+    """
+    JSONResponse
+    """
+    if isstring(obj):
+        res = obj
+    elif isinstance(obj, (dict, list)):
+        res = unicode(json.dumps(obj))
+    else:
+        res = obj
+    return httpResponse(res, "200 OK", start_response)
 
 def httpPage(environ, start_response=None, checkuser=False):
     """
