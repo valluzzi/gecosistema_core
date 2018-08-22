@@ -87,10 +87,7 @@ def setenv(varname, value):
     """
     setenv
     """
-    print "varname:",varname,".........."
     os.environ[varname] = value
-    for key in os.environ:
-        print "(",key,")"
 
 
 
