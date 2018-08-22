@@ -26,7 +26,7 @@ from .filesystem import *
 from .strings import *
 from jinja2 import Environment, FileSystemLoader
 import os,sys,math
-import unicode,json
+import json
 
 def webpath(filename, pivot ):
     """
