@@ -108,6 +108,12 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
     """
     return Exec("python " + command, env, precond, postcond, remove, skipIfExists, nowait=False, verbose=verbose)
 
+def PYTHON(command):
+    """
+    PYTHON
+    """
+    return Python(command)
+
 def Rscript(command, additional_lib="", verbose=False):
     """
     Rscript -  call  rscript interpreter
