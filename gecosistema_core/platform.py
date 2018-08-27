@@ -89,7 +89,12 @@ def setenv(varname, value):
     """
     os.environ[varname] = value
 
-
+def add_site_packages(pathname):
+    """
+    addpath
+    """
+    if not pathname in sys.path:
+        sys.path.append(pathname)
 
 if __name__ == '__main__':
     workdir = r"D:\Users\vlr20\Projects\BitBucket\OpenSITUA\apps\common\lib\js\corex"
