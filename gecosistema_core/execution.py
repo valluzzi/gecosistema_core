@@ -112,7 +112,7 @@ def PYTHON(command):
     """
     PYTHON
     """
-    return Python(command)
+    return Python(command,verbose=True)
 
 def Rscript(command, additional_lib="", verbose=False):
     """
