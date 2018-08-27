@@ -26,6 +26,7 @@ import shutil
 import datetime
 import hashlib
 import base64
+from .strings import listify
 
 def file(pathname):
     """
