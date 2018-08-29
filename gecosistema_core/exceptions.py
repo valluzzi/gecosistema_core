@@ -1,6 +1,6 @@
-# -----------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Licence:
-# Copyright (c) 2012-2018 Luzzi Valerio for Gecosistema S.r.l.
+# Copyright (c) 2012-2018 Luzzi Valerio 
 #
 # The above copyright notice and this permission notice shall be
 # included in all copies or substantial portions of the Software.
@@ -14,18 +14,17 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-# Name:        execution
+#
+# Name:        exceptions.py
 # Purpose:
 #
 # Author:      Luzzi Valerio
 #
-# Created:     27/07/2018
-# -----------------------------------------------------------------------------
-from .platform import *
-from .filesystem import *
-from .strings import *
-from .execution import *
-from .http import *
-from .xml_utils import *
-from .excel import *
-from .exceptions import *
+# Created:     29/08/2018
+# -------------------------------------------------------------------------------
+
+def manage_exception(ex, fname=""):
+    """
+    manage_exception
+    """
+    print("Exception on %s:%s"%(fname,ex))

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="802cd4cd-7fbf-4d96-8186-e5a5480f139a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/gecosistema_core/exceptions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gecosistema_core/strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/gecosistema_core/strings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gecosistema_core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/gecosistema_core/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,54 +30,33 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="12" />
+          <entry key="py" value="14" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="12" />
+          <entry key="Python" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="91" />
-          <entry key="py" value="2160" />
+          <entry key="py" value="2274" />
           <entry key="txt" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="10" />
-          <entry key="Python" value="2251" />
+          <entry key="Python" value="2365" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gecosistema_core/http.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2772">
-              <caret line="160" column="9" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="9" />
-              <folding>
-                <element signature="e#924#949#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gecosistema_core/filesystem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gecosistema_core/stime.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -99,18 +79,39 @@
         <entry file="file://$PROJECT_DIR$/gecosistema_core/platform.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="74" column="7" lean-forward="true" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
+              <caret line="74" column="7" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gecosistema_core/strings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="484">
               <caret line="312" column="91" selection-start-line="312" selection-start-column="91" selection-end-line="312" selection-end-column="91" />
               <folding>
                 <element signature="e#923#932#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gecosistema_core/exceptions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gecosistema_core/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+              <folding>
+                <element signature="e#943#966#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,7 +144,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gecosistema_core/execution.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1980">
+            <state relative-caret-position="876">
               <caret line="114" column="38" selection-start-line="114" selection-start-column="38" selection-end-line="114" selection-end-column="38" />
             </state>
           </provider>
@@ -182,13 +183,14 @@
         <option value="$PROJECT_DIR$/gecosistema_core/stime.py" />
         <option value="$PROJECT_DIR$/gecosistema_core/xml_utils.py" />
         <option value="$PROJECT_DIR$/gecosistema_core/excel.py" />
-        <option value="$PROJECT_DIR$/gecosistema_core/__init__.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/gecosistema_core/http.py" />
         <option value="$PROJECT_DIR$/gecosistema_core/execution.py" />
         <option value="$PROJECT_DIR$/gecosistema_core/platform.py" />
         <option value="$PROJECT_DIR$/gecosistema_core/filesystem.py" />
         <option value="$PROJECT_DIR$/gecosistema_core/strings.py" />
+        <option value="$PROJECT_DIR$/gecosistema_core/__init__.py" />
+        <option value="$PROJECT_DIR$/gecosistema_core/exceptions.py" />
       </list>
     </option>
   </component>
@@ -298,8 +300,8 @@
     <frame x="-595" y="-1088" width="2576" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.29179648" visible="true" weight="0.09141056" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.70820355" side_tool="true" visible="true" weight="0.09141056" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.29179648" visible="true" weight="0.09141056" />
+      <window_info id="Structure" order="1" sideWeight="0.70820355" side_tool="true" visible="true" weight="0.09141056" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -325,13 +327,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="20/08/2018" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gecosistema_core/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gecosistema_core/http.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2772">
@@ -383,20 +378,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gecosistema_core/execution.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1980">
-          <caret line="114" column="38" selection-start-line="114" selection-start-column="38" selection-end-line="114" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/version.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/gecosistema_core/platform.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="74" column="7" lean-forward="true" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
+          <caret line="74" column="7" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -407,6 +395,30 @@
           <folding>
             <element signature="e#923#932#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gecosistema_core/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+          <folding>
+            <element signature="e#943#966#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gecosistema_core/execution.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="876">
+          <caret line="114" column="38" selection-start-line="114" selection-start-column="38" selection-end-line="114" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gecosistema_core/exceptions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
         </state>
       </provider>
     </entry>
