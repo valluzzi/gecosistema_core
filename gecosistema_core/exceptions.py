@@ -22,9 +22,11 @@
 #
 # Created:     29/08/2018
 # -------------------------------------------------------------------------------
+import inspect
 
-def manage_exception(ex, fname=""):
+def manage(ex):
     """
-    manage_exception
+    manage
     """
-    print("Exception on %s:%s"%(fname,ex))
+    caller_name = inspect.stack()[2][3]
+    print("Exception on %s:%s"%(fname,caller_name))
