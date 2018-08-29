@@ -29,4 +29,4 @@ def manage(ex):
     manage
     """
     caller_name = inspect.stack()[2][3]
-    print("Exception on %s:%s"%(fname,caller_name))
+    print("Exception on %s:%s"%(caller_name,ex))
