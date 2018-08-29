@@ -300,17 +300,17 @@ def listify(text, sep=",", glue="\""):
         return text
     return [text]
 
-def mapify(text, sep=",", kvsep="=", strip_char=" "):
+def mapify(text, sep=",", kvsep="=", strip_char=" ", glue= "\""):
     """
     Growup a dictionary from text string
     """
     # text = "hello=world,good=bye"
-    items = listify(text, sep)
+    items = listify(text, sep, glue)
     res = {}
     for item in items:
         item = item.strip(strip_char)
         key, value = item.split(kvsep, 1)
-        key, value = key.strip(strip_char), value.strip(strip_char)
+        key, value = key.strip(strip_char).strip(glue), value.strip(strip_char).strip(glue)
         res[key] = value
     return res
 
