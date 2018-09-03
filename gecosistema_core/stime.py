@@ -25,6 +25,12 @@
 from .strings import isstring
 import datetime
 
+def now():
+    """
+    now - shortcut for datetime.datetime.now
+    """
+    return datetime.datetime.now()
+
 def strftime(frmt, text):
     """
     strftime
