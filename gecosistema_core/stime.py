@@ -41,7 +41,7 @@ def checkpoint(t, name = ""):
     """
     checkpoint
     """
-    print("Time elapsed from %s: %ss."%(time_from(t),name))
+    print("Time elapsed from %s: %ss."%(name,time_from(t)))
 
 
 def strftime(frmt, text):
