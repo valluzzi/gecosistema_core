@@ -25,6 +25,7 @@ from .platform import *
 from .filesystem import *
 from .strings import *
 from .execution import *
+from .stime import *
 from .http import *
 from .xml_utils import *
 from .excel import *
