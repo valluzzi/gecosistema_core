@@ -31,6 +31,19 @@ def now():
     """
     return datetime.datetime.now()
 
+def time_from(t):
+    """
+    time_from -  return the time (seconds) from time t
+    """
+    return (datetime.datetime.now()-t).total_seconds()
+
+def checkpoint(t, name = ""):
+    """
+    checkpoint
+    """
+    print("Time elapsed from %s: %ss."%(time_from(t),name))
+
+
 def strftime(frmt, text):
     """
     strftime
