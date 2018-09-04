@@ -49,7 +49,7 @@ def strftime(frmt, text):
     strftime
     """
     if not text:
-        return ""
+        return datetime.datetime.now()
     elif isinstance(text, (datetime.datetime,datetime.date,) ):
         return text.strftime(frmt)
     elif isstring(text):
