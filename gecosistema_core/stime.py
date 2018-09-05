@@ -57,3 +57,13 @@ def strftime(frmt, text):
         return date.strftime(frmt)
 
     return ""
+
+def month_diff(dateA,dateB):
+    """
+    month_diff - Month difference
+    """
+    periodA = strftime("%Y%m",dateA)
+    YA, mA = int(periodA[:4]), int(periodA[4:])
+    periodB = strftime("%Y%m",dateB)
+    YB, mB = int(periodB[:4]), int(periodB[4:])
+    return (YA-YB)*12 + (mA-mB)
