@@ -97,11 +97,11 @@ def days_of_month(date):
     """
     return int(strftime("%d", lastdayofmonth(date)))
 
-def next_period(date):
+def next_period(date, n=1):
     """
     next_period
     """
     date = firstdayofmonth(date)
-    n    = days_of_month(date)
-    date += datetime.timedelta(days=n)
+    for j in range(n):
+        date += datetime.timedelta(days=days_of_month(date))
     return strftime("%Y%m",date)
