@@ -67,3 +67,29 @@ def month_diff(dateA,dateB):
     periodB = strftime("%Y%m",dateB)
     YB, mB = int(periodB[:4]), int(periodB[4:])
     return (YA-YB)*12 + (mA-mB)
+
+def firstdayofmonth(date):
+    """
+    firstdayofmonth
+    """
+    date = date + "01" if isstring(date) and len(date) == 6 else date
+    date = strftime("%Y-%m-01", date)
+    return datetime.datetime.strptime(date,"%Y-%m-%d").date()
+
+def lastdayofmonth(date):
+    """
+    lastdayofmonth
+    """
+    date = date + "01" if isstring(date) and len(date) == 6 else date
+    date = ctod(date)
+    for d in (28, 29, 30, 31):
+        date1 = datetime.date(date.year, date.month, d)
+        if (date1 + datetime.timedelta(days=1)).month != date.month:
+            return date1
+    return None
+
+def days_of_month(date):
+    """
+    days_of_month
+    """
+    return int(strftime("%d", lastdayofmonth(date)))
