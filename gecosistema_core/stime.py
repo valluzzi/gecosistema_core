@@ -72,7 +72,10 @@ def firstdayofmonth(date):
     """
     firstdayofmonth
     """
-    date = date + "01" if isstring(date) and len(date) == 6 else date
+    if isstring(date) and len(date)==6:
+        date = datetime.datetime.strptime(date+"01","%Y%m%d").date()
+    elif isstring(date) and len(date)==10 and "-" in date:
+        date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
     date = strftime("%Y-%m-01", date)
     return datetime.datetime.strptime(date,"%Y-%m-%d").date()
 
@@ -80,8 +83,8 @@ def lastdayofmonth(date):
     """
     lastdayofmonth
     """
-    date = date + "01" if isstring(date) and len(date) == 6 else date
-    date = ctod(date)
+    date = firstdayofmonth(date)
+
     for d in (28, 29, 30, 31):
         date1 = datetime.date(date.year, date.month, d)
         if (date1 + datetime.timedelta(days=1)).month != date.month:
