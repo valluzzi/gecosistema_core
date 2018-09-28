@@ -27,6 +27,7 @@ import bz2
 import tarfile
 import rarfile
 import os
+from .strings import *
 from .filesystem import *
 
 def compress(filenames, filezip="", removesrc=False):
