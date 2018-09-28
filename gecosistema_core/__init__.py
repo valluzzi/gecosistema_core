@@ -23,6 +23,7 @@
 # -----------------------------------------------------------------------------
 from .platform import *
 from .filesystem import *
+from .compression import *
 from .strings import *
 from .execution import *
 from .datatypes import *
