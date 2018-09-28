@@ -49,13 +49,13 @@ def ctod(text):
     """
     text = text.replace("-","").replace(":","").replace(".","").replace(" ","")
 
-    if len(text)==6:
+    if len(text)==8:
         return datetime.datetime.strptime(text,"%Y%m%d").date()
-    elif len(text)==8:
-        return datetime.datetime.strptime(text, "%Y%m%d%H")
     elif len(text)==10:
-        return datetime.datetime.strptime(text, "%Y%m%d%H%M")
+        return datetime.datetime.strptime(text, "%Y%m%d%H")
     elif len(text)==12:
+        return datetime.datetime.strptime(text, "%Y%m%d%H%M")
+    elif len(text)==14:
         return datetime.datetime.strptime(text, "%Y%m%d%H%M%S")
     return None
 
