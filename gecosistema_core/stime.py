@@ -43,7 +43,7 @@ def drange(bdate, edate):
     drange - array of dates from badate to edate (included)
     """
     bdate,edate = ctod(bdate),ctod(edate)
-    n = (edate-bdate).days
+    n = int((edate-bdate).days)
     return [ tomorrow(bdate,j) for j in range(0,n) ]
 
 def time_from(t):
