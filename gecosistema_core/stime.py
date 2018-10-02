@@ -31,6 +31,21 @@ def now():
     """
     return datetime.datetime.now()
 
+def tomorrow(date=None, days=1):
+    """
+    tomorrow
+    """
+    date = ctod(date) if date else datetime.datetime.now()
+    return date + datetime.timedelta(days=days)
+
+def drange(bdate, edate):
+    """
+    drange - array of dates from badate to edate (included)
+    """
+    bdate,edate = ctod(bdate),ctod(edate)
+    n = (edate-bdate).days
+    return [ tomorrow(bdate,j) for j in range(0:n) ]
+
 def time_from(t):
     """
     time_from -  return the time (seconds) from time t
