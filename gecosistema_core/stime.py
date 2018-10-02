@@ -44,7 +44,7 @@ def drange(bdate, edate):
     """
     bdate,edate = ctod(bdate),ctod(edate)
     n = (edate-bdate).days
-    return [ tomorrow(bdate,j) for j in range(0:n) ]
+    return [ tomorrow(bdate,j) for j in range(0,n) ]
 
 def time_from(t):
     """
