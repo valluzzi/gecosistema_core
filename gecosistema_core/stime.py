@@ -62,6 +62,9 @@ def ctod(text):
     """
     ctod - parse text to date/ datime
     """
+    if isinstance(text, (datetime.datetime, datetime.date,)):
+        return text
+
     text = text.replace("-","").replace(":","").replace(".","").replace(" ","")
 
     if len(text)==8:
