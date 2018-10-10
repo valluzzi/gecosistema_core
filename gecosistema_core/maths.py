@@ -51,7 +51,7 @@ def RMSE(s,o):
     s, o = np.array(s), np.array(o)
     return np.sqrt( np.nansum( np.power(s-o,2) ))/ len(o)
 
-def NASH(s,o)
+def NASH(s,o):
     """
     Nash Sutcliffe
     s - array of predictions (or simulated)
