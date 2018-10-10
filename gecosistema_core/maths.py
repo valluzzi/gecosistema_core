@@ -24,7 +24,7 @@
 # -------------------------------------------------------------------------------
 import numpy as np
 
-def M(s,o)
+def M(s,o):
     """
     M - 
     s - array of predictions (or simulated)
