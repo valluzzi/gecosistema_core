@@ -32,3 +32,5 @@ from .http import *
 from .xml_utils import *
 from .excel import *
 from .exceptions import *
+
+from .math import *
