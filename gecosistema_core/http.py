@@ -25,7 +25,7 @@
 from .filesystem import *
 from .strings import *
 from jinja2 import Environment, FileSystemLoader
-import os,sys,math
+import os,sys
 import json,base64
 from cgi import FieldStorage
 from builtins import str as unicode
@@ -201,7 +201,7 @@ def httpPage(environ, start_response=None, checkuser=False):
         "loadcss": loadscripts(csss,"css"),
         #"splashscreen": loadsplash(justpath(url) + "/splashscreen.png"),
         "os": os,
-        "math": math,
+        #"math": math,
         "gecosistema_core": gecosistema_core,
         "environ":environ
     }
