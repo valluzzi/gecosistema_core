@@ -60,5 +60,3 @@ def NASH(s,o):
     s, o = np.array(s), np.array(o)
     return (1.0 - np.nansum(np.power(s-o,2))) / (1.0 -  np.nansum(np.power(s-np.nanmean(o),2) )
 
-if __name__ == "__main__":
-    main()
