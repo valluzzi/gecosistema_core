@@ -21,7 +21,7 @@
 #
 # Created:     27/07/2018
 # -----------------------------------------------------------------------------
-import os,sys
+import os,sys,json
 import subprocess
 from .strings import *
 from .platform import *
@@ -102,17 +102,24 @@ def EXEC(command):
     """
     return Exec(command)
 
-def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False, verbose=False):
+def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False, verbose=False, outputmode="boolean"):
     """
     Python
     """
-    return Exec("python " + command, env, precond, postcond, remove, skipIfExists, nowait=False, verbose=verbose)
+
+    res = Exec("python " + command, env, precond, postcond, remove, skipIfExists, nowait=False, verbose=verbose)
+    if outputmode="boolean":
+        res
+    elif outputmode="json":
+        res = json.loads(res)
+
+    return res
 
 def PYTHON(command):
     """
     PYTHON
     """
-    return Python(command,verbose=True)
+    return Python(command,verbose=True,outputmode="boolean")
 
 def Rscript(command, additional_lib="", verbose=False):
     """
