@@ -108,9 +108,9 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
     """
 
     res = Exec("python " + command, env, precond, postcond, remove, skipIfExists, nowait=False, verbose=verbose)
-    if outputmode="boolean":
+    if outputmode=="boolean":
         res
-    elif outputmode="json":
+    elif outputmode=="json":
         res = json.loads(res)
 
     return res
