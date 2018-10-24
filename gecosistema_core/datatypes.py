@@ -149,7 +149,7 @@ def parseValue(value, nodata=("", "Na", "NaN", "-", "--", "N/A")):
     if isstring(value) and value in nodata:
         return None
     elif isdate(value):
-        return strftime("%Y-%m-%d", value)
+        return parseDate(value)
     elif isdatetime(value):
         return strftime("%Y-%m-%d %H:%M:%S", value)
     elif isint(value):
