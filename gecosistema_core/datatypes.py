@@ -79,8 +79,13 @@ def parseDate(text):
         text = text.strip()
         g = re.match(PATTERN, text, re.IGNORECASE | re.MULTILINE)
         if g:
-            res = g.groupdict()["target"]
-            return strftime("%Y-%m-%d", res)
+            data = g.groupdict()["target"]
+            if "/" in data:
+                arr = data.split("/")
+                if len(arr[2])==4:
+                    data = datetime.datetime.strptime(data,"%m/%d/%Y")
+
+            return strftime("%Y-%m-%d", data)
     return None
 
 
@@ -99,11 +104,6 @@ def parseDatetime(text):
         g = re.match(PATTERN, text, re.IGNORECASE | re.MULTILINE)
         if g:
             data = g.groupdict()["target"]
-            if "/" in data:
-                arr = data.split("/")
-                if len(arr[2])==4:
-                    data = datetime.datetime.strptime(data,"%m/%d/%Y")
-            
             return strftime("%Y-%m-%d %H:%M:%S", data)
     return None
 
