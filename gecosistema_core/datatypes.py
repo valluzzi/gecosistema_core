@@ -25,6 +25,7 @@
 from .strings import *
 from .stime   import *
 import numpy as np
+import datetime
 
 def parseInt(text):
     """
@@ -97,8 +98,13 @@ def parseDatetime(text):
         text = text.strip()
         g = re.match(PATTERN, text, re.IGNORECASE | re.MULTILINE)
         if g:
-            res = g.groupdict()["target"]
-            return strftime("%Y-%m-%d %H:%M:%S", res)
+            data = g.groupdict()["target"]
+            if "/" in data:
+                arr = data.split("/")
+                if len(arr[2])==4:
+                    data = datetime.datetime.strptime(data,"%m/%d/%Y")
+            
+            return strftime("%Y-%m-%d %H:%M:%S", data)
     return None
 
 
