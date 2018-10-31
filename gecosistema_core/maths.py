@@ -58,4 +58,4 @@ def NASH(s,o):
     o - array of observations (or targets)
     """
     s, o = np.array(s), np.array(o)
-    return 1.0 - np.nansum(np.power(s-o,2)) / np.nansum(np.power(o-np.nanmean(o),2) )
+    return 1.0 - np.nansum( (s-o)**2 ) / np.nansum( (o-np.nanmean(o))**2 )

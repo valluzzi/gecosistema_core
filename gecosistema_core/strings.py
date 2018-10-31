@@ -25,6 +25,7 @@
 import re
 import six
 import random
+from .datatypes import parseValue
 
 def isstring(var):
     """
@@ -300,7 +301,7 @@ def listify(text, sep=",", glue="\""):
         return text
     return [text]
 
-def mapify(text, sep=",", kvsep="=", strip_char=" ", glue= "\""):
+def mapify(text, sep=",", kvsep="=", strip_char=" ", glue= "\"", parsing=False):
     """
     Growup a dictionary from text string
     """
@@ -311,7 +312,14 @@ def mapify(text, sep=",", kvsep="=", strip_char=" ", glue= "\""):
         item = item.strip(strip_char)
         key, value = item.split(kvsep, 1)
         key, value = key.strip(strip_char).strip(glue), value.strip(strip_char).strip(glue)
+
+        if parsing:
+            value  = parseValue(value)
+
+
         res[key] = value
+
+
     return res
 
 
@@ -346,6 +354,9 @@ def val(text):
 
     return None
 
+if __name__ == "__main__":
 
-
-
+    env = mapify("C=1.4,e=0.029")
+    print env
+    env = mapify("C=1.4,e=0.029",parsing=True)
+    print env
