@@ -25,7 +25,7 @@
 import re
 import six
 import random
-from .datatypes import parseValue
+#from .datatypes import parseValue
 
 def isstring(var):
     """
@@ -313,8 +313,8 @@ def mapify(text, sep=",", kvsep="=", strip_char=" ", glue= "\"", parsing=False):
         key, value = item.split(kvsep, 1)
         key, value = key.strip(strip_char).strip(glue), value.strip(strip_char).strip(glue)
 
-        if parsing:
-            value  = parseValue(value)
+        #if parsing:
+            #value  = parseValue(value)
 
 
         res[key] = value
