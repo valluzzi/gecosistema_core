@@ -149,6 +149,7 @@ def parseValue(value, nodata=("", "Na", "NaN", "-", "--", "N/A")):
     if isstring(value) and value in nodata:
         return None
     if isstring(value) and value.startswith("[") and value.endswith("]"):
+        value = unwrap(value,"[","]")
         return parseValue(listify(value))
     elif isdate(value):
         return parseDate(value)
