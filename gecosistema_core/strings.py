@@ -25,7 +25,6 @@
 import re
 import six
 import random
-from .datatypes import parseValue
 
 def isstring(var):
     """
