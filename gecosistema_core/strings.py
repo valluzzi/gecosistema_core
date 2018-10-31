@@ -354,9 +354,3 @@ def val(text):
 
     return None
 
-if __name__ == "__main__":
-
-    env = mapify("C=1.4,e=0.029")
-    print env
-    env = mapify("C=1.4,e=0.029",parsing=True)
-    print env

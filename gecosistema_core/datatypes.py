@@ -148,6 +148,8 @@ def parseValue(value, nodata=("", "Na", "NaN", "-", "--", "N/A")):
         return None
     if isstring(value) and value in nodata:
         return None
+    if isstring(value) and value.startswith("[") and value.endswith("]")
+        return parseValue(listify(value))
     elif isdate(value):
         return parseDate(value)
     elif isdatetime(value):
