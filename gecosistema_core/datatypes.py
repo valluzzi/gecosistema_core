@@ -148,6 +148,9 @@ def parseValue(value, nodata=("", "Na", "NaN", "-", "--", "N/A")):
         return None
     if isstring(value) and value in nodata:
         return None
+    if isstring(value) and value.startswith("(") and value.endswith(")"):
+        value = unwrap(value,"(",")")
+        return parseValue(listify(value))
     if isstring(value) and value.startswith("[") and value.endswith("]"):
         value = unwrap(value,"[","]")
         return parseValue(listify(value))
@@ -185,3 +188,7 @@ def mapify(text, sep=",", kvsep="=", strip_char=" ", glue= "\"", parsing=False):
         res[key] = value
 
     return res
+
+if __name__ =="__main__":
+    text = 'C=8795,gamma=0.029,epsilon=600,train_percent=0.75,droplist="P1,P2,P9,P8,T1,T7,T8,T9,T11,T14,T17,E1"'
+    print mapify(text,parsing=True)

@@ -169,7 +169,7 @@ def httpPage(environ, start_response=None, checkuser=False):
     import gecosistema_core
     url = environ["url"] if "url" in environ else normpath(environ["SCRIPT_FILENAME"])
     url = forceext(url, "html")
-    #root   = environ["ROOTDIR"] if "ROOTDIR" in environ else ""
+
     DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else ""
     HTTP_COOKIE   = environ["HTTP_COOKIE"]   if "HTTP_COOKIE"   in environ else ""
 
@@ -207,6 +207,52 @@ def httpPage(environ, start_response=None, checkuser=False):
     }
     html = t.render(variables).encode("utf-8","replace")
     return httpResponseOK(html, start_response)
+
+
+def htmlResponse(environ, start_response=None, checkuser=False):
+    """
+    htmlResponse - return a Html Page
+    """
+
+    if checkuser and not check_user_permissions(environ):
+        environ["url"] = "back.html"
+        return htmlResponse(environ, start_response)
+
+    url = environ["url"] if "url" in environ else normpath(environ["SCRIPT_FILENAME"])
+    url = forceext(url, "html")
+
+    DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else ""
+    #HTTP_COOKIE   = environ["HTTP_COOKIE"]   if "HTTP_COOKIE"   in environ else ""
+
+    if not file(url):
+        return httpResponseNotFound(start_response)
+
+    workdir    = justpath(url)
+    index_html = justfname(url)
+
+    jss = (DOCUMENT_ROOT + "/lib/js",
+           justpath(url),)
+
+    csss = (DOCUMENT_ROOT + "/lib/css",
+            DOCUMENT_ROOT + "/lib/js",
+            DOCUMENT_ROOT + "/lib/images",
+            justpath(url),)
+
+    env = Environment(loader=FileSystemLoader(workdir))
+    t = env.get_template(index_html)
+
+    variables = {
+        "loadjs":  loadscripts(jss,"js"),
+        "loadcss": loadscripts(csss,"css"),
+        #"splashscreen": loadsplash(justpath(url) + "/splashscreen.png"),
+        "os": os,
+        "math": math,
+        #"gecosistema_core": gecosistema_core,
+        "environ":environ
+    }
+    html = t.render(variables).encode("utf-8","replace")
+    return httpResponseOK(html, start_response)
+
 
 def check_user_permissions(environ):
     """
