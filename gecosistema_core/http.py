@@ -128,6 +128,25 @@ def loadscripts(dirnames,type="js"):
 
     return text
 
+def loadlibs(dirnames,type="js"):
+    """
+    loadlibs
+    """
+    text = ""
+    dirnames = listify(dirnames, sep=",")
+
+    for dirname in dirnames:
+        filenames = ls(dirname, r'.*\.%s$'%(type), recursive=True)
+        for filename in filenames:
+            filename = "/lib/" + rightpart(normpath(filename), "/lib/")
+            if filename != '/':
+                if   type=="js":
+                    text += sformat("<script type='text/javascript' src='{filename}'></script>\n", {"filename": filename});
+                elif type=="css":
+                    text += sformat("<link href='{filename}' rel='stylesheet' type='text/css'/>\n",{"filename": filename});
+
+    return text
+
 def httpResponse(text, status, start_response):
     """
     httpResponse
@@ -242,8 +261,8 @@ def htmlResponse(environ, start_response=None, checkuser=False):
     t = env.get_template(index_html)
 
     variables = {
-        "loadjs":  loadscripts(jss,"js"),
-        "loadcss": loadscripts(csss,"css"),
+        "loadjs":  loadlibs(jss,"js"),
+        "loadcss": loadlibs(csss,"css"),
         #"splashscreen": loadsplash(justpath(url) + "/splashscreen.png"),
         "os": os,
         "math": math,
