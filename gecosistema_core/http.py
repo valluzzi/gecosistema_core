@@ -260,13 +260,15 @@ def htmlResponse(environ, start_response=None, checkuser=False):
     env = Environment(loader=FileSystemLoader(workdir))
     t = env.get_template(index_html)
 
+    import gecosistema_core
+
     variables = {
         "loadjs":  loadlibs(jss,"js"),
         "loadcss": loadlibs(csss,"css"),
         #"splashscreen": loadsplash(justpath(url) + "/splashscreen.png"),
         "os": os,
         "math": math,
-        #"gecosistema_core": gecosistema_core,
+        "gecosistema_core": gecosistema_core,
         "environ":environ
     }
     html = t.render(variables).encode("utf-8","replace")
