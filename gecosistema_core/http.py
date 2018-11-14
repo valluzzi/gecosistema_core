@@ -149,6 +149,19 @@ def loadlibs(dirnames,type="js"):
 
     return text
 
+def template(filetpl, env, fileout=None):
+    """
+    template -  generate text from jinja2 template file
+    """
+    workdir = justpath(filetpl)
+    workdir = workdir if workdir else "."
+    environ = Environment(loader=FileSystemLoader(workdir))
+    t = environ.get_template(justfname(filetpl))
+    text = t.render(env).encode("utf-8")
+    if fileout:
+        strtofile(text, fileout)
+    return text
+
 def httpResponse(text, status, start_response):
     """
     httpResponse
