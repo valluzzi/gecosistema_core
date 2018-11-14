@@ -269,7 +269,8 @@ def htmlResponse(environ, start_response=None, checkuser=False):
         "os": os,
         "math": math,
         "gecosistema_core": gecosistema_core,
-        "environ":environ
+        "environ":environ,
+        "__file__":url
     }
     html = t.render(variables).encode("utf-8","replace")
     return httpResponseOK(html, start_response)
