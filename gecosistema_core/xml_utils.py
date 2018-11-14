@@ -21,6 +21,7 @@
 #
 # Created:     13/08/2018
 # -----------------------------------------------------------------------------
+from .strings import *
 from .filesystem import *
 import json
 from xmljson import yahoo as bf
