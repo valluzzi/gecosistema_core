@@ -138,12 +138,14 @@ def loadlibs(dirnames,type="js"):
     for dirname in dirnames:
         filenames = ls(dirname, r'.*\.%s$'%(type), recursive=True)
         for filename in filenames:
-            filename = "/lib/" + rightpart(normpath(filename), "/lib/")
-            if filename != '/':
-                if   type=="js":
-                    text += sformat("<script type='text/javascript' src='{filename}'></script>\n", {"filename": filename});
-                elif type=="css":
-                    text += sformat("<link href='{filename}' rel='stylesheet' type='text/css'/>\n",{"filename": filename});
+            webname = rightpart(normpath(filename), "/lib/")
+            if webname:
+                filename = "/lib/" + rightpart(normpath(filename), "/lib/")
+                if filename != '/':
+                    if   type=="js":
+                        text += sformat("<script type='text/javascript' src='{filename}'></script>\n", {"filename": filename});
+                    elif type=="css":
+                        text += sformat("<link href='{filename}' rel='stylesheet' type='text/css'/>\n",{"filename": filename});
 
     return text
 
@@ -222,7 +224,8 @@ def httpPage(environ, start_response=None, checkuser=False):
         "os": os,
         "math": math,
         "gecosistema_core": gecosistema_core,
-        "environ":environ
+        "environ":environ,
+        "__file__":url
     }
     html = t.render(variables).encode("utf-8","replace")
     return httpResponseOK(html, start_response)
@@ -265,7 +268,6 @@ def htmlResponse(environ, start_response=None, checkuser=False):
     variables = {
         "loadjs":  loadlibs(jss,"js"),
         "loadcss": loadlibs(csss,"css"),
-        #"splashscreen": loadsplash(justpath(url) + "/splashscreen.png"),
         "os": os,
         "math": math,
         "gecosistema_core": gecosistema_core,
