@@ -188,7 +188,8 @@ def tempname(prefix="", postfix="", ext=""):
     tempname -returns a temporary name
     """
     uid = random.randint(0,1e6)
-    return forceext("%s%s%s"%(prefix,uid,postfix), ext)
+    ext = "."+ext if ext else ""
+    return "%s%s%s%s"%(prefix,uid,postfix,ext)
 
 def textin(text, prefix, postfix, casesensitive=True):
     """
