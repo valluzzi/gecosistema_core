@@ -168,7 +168,7 @@ def parseValue(value, nodata=("", "Na", "NaN", "-", "--", "N/A")):
         return value
     elif isarray(value):
         return [parseValue(item) for item in value]
-    return None
+    return value
 
 def mapify(text, sep=",", kvsep="=", strip_char=" ", glue= "\"", parsing=False):
     """
