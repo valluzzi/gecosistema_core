@@ -124,7 +124,7 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
             fileres = postcond[0]
             res = json.loads(filetostr(fileres))
         else:
-            res = {"succes":res}
+            res = {"success":res}
 
     return res
 
