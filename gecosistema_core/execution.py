@@ -24,6 +24,7 @@
 import os,sys,json
 import subprocess
 from .strings import *
+from .filesystem import *
 from .platform import *
 import datetime
 
@@ -107,6 +108,10 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
     Python
     """
     PYTHON_HOME = env["PYTHON_HOME"] +"/" if "PYTHON_HOME" in env else ""
+
+    #if isstring(command) and not isfile(command):
+
+
     res = Exec(PYTHON_HOME + "python " + command, env, precond, postcond, remove, skipIfExists, nowait=False, verbose=verbose)
     if outputmode=="boolean":
         res

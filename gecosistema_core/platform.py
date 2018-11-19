@@ -22,13 +22,13 @@
 # Created:     27/07/2018
 # -----------------------------------------------------------------------------
 import os,sys,time
-import multiprocessing
+#import multiprocessing
 
 def cpu_count():
     """
     cpu_count
     """
-    return multiprocessing.cpu_count()
+    return 8 #multiprocessing.cpu_count()
 
 def isWindows():
     """
