@@ -27,7 +27,7 @@ import datetime
 import hashlib
 import base64
 import tempfile
-from .strings import listify
+from .strings import listify,tempname
 
 def file(pathname):
     """
