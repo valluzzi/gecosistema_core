@@ -28,7 +28,7 @@ from .filesystem import *
 from .platform import *
 import datetime
 
-def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False, nowait=False, verbose=False):
+def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False, nowait=False, verbose=False, outputmode="boolean"):
     """
     Exec
     """
@@ -107,6 +107,7 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
     """
     Python
     """
+    filetmp=""
     PYTHON_HOME = env["PYTHON_HOME"] +"/" if "PYTHON_HOME" in env else ""
 
     if isstring(command) and not isfile(command):
@@ -115,10 +116,18 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
         command = filetmp
 
     res = Exec(PYTHON_HOME + "python " + command, env, precond, postcond, remove, skipIfExists, nowait=False, verbose=verbose)
+
+    if filetmp:
+        remove(filetmp)
+
     if outputmode=="boolean":
         res
     elif outputmode=="json":
-        res = json.loads(res)
+        if len(postcond)>0:
+            fileres = postcond[0]
+            res = json.loads(filetostr(fileres))
+        else:
+            res = {"succes":res}
 
     return res
 
