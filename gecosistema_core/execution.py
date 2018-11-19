@@ -115,7 +115,7 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
         strtofile(command,filetmp)
         command = filetmp
 
-    res = Exec(PYTHON_HOME + "python " + command, env, precond, postcond, remove=[filetmp], skipIfExists, nowait=False, verbose=verbose)
+    res = Exec(PYTHON_HOME + "python " + command, env, precond, postcond, remove=[filetmp], skipIfExists=skipIfExists, nowait=False, verbose=verbose)
 
     if outputmode=="boolean":
         res
