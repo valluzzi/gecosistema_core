@@ -109,8 +109,10 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
     """
     PYTHON_HOME = env["PYTHON_HOME"] +"/" if "PYTHON_HOME" in env else ""
 
-    #if isstring(command) and not isfile(command):
-
+    if isstring(command) and not isfile(command):
+        filetmp = tempfname(ext="py")
+        strtofile(command,filetmp)
+        command = filetmp
 
     res = Exec(PYTHON_HOME + "python " + command, env, precond, postcond, remove, skipIfExists, nowait=False, verbose=verbose)
     if outputmode=="boolean":
