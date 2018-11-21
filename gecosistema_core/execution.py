@@ -121,6 +121,14 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
 
     return Exec(PYTHON_HOME + "python " + command, env, precond, postcond, remove=[filetmp], skipIfExists=skipIfExists, nowait=False, verbose=verbose, outputmode=outputmode)
 
+def Python36(command):
+    """
+    Python36
+    """
+    env ={"PYTHON_HOME":"c:/Python36"}
+    return Python(command,env,outputmode="json")
+
+
 def PYTHON(command):
     """
     PYTHON
