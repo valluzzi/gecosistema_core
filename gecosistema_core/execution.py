@@ -82,9 +82,10 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
                     outdata = json.loads(outdata)
 
             except Exception as ex:
-                if verbose:
-                    print(ex)
-                    return False if outputmode=="boolean" else {"success":False,"exception":""+ex}
+                if outputmode=="boolean":
+                    return False
+                else:
+                    return {"success":False,"exception":""+ex}
 
     # check post conditions
     for filename in listify(postcond):
