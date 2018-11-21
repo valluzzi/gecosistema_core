@@ -116,18 +116,7 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
         strtofile(command,filetmp)
         command = filetmp
 
-    res = Exec(PYTHON_HOME + "python " + command, env, precond, postcond, remove=[filetmp], skipIfExists=skipIfExists, nowait=False, verbose=verbose)
-
-    if outputmode=="boolean":
-        res
-    elif outputmode=="json":
-        if len(postcond)>0:
-            fileres = postcond[0]
-            res = json.loads(filetostr(fileres))
-        else:
-            res = {"success":res}
-
-    return res
+    return Exec(PYTHON_HOME + "python " + command, env, precond, postcond, remove=[filetmp], skipIfExists=skipIfExists, nowait=False, verbose=verbose, outputmode=outputmode)
 
 def PYTHON(command):
     """
