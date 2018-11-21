@@ -21,7 +21,7 @@
 #
 # Created:     27/07/2018
 # -----------------------------------------------------------------------------
-import os,sys,json
+import os,sys,ast
 import subprocess
 from .strings import *
 from .filesystem import *
@@ -79,7 +79,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
                 print(outdata)
                 print("-----")
                 if "[" in outdata or "{" in outdata:
-                    outdata = json.loads(outdata)
+                    outdata = ast.literal_eval(outdata)
 
             except subprocess.CalledProcessError as e:
                 if outputmode=="boolean":
