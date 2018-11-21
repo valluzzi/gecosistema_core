@@ -75,6 +75,9 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
             try:
                 #subprocess.call(args, shell=False)
                 outdata = subprocess.check_output(command, stderr=subprocess.STDOUT).decode()
+                print("outdata:")
+                print(outdata)
+                print("-----")
                 if "[" in outdata or "{" in outdata:
                     outdata = json.loads(outdata)
 

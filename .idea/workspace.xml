@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="802cd4cd-7fbf-4d96-8186-e5a5480f139a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gecosistema_core/execution.py" beforeDir="false" afterPath="$PROJECT_DIR$/gecosistema_core/execution.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,14 +46,14 @@
         <counts>
           <entry key="Python Console" value="91" />
           <entry key="dummy" value="7" />
-          <entry key="py" value="6740" />
+          <entry key="py" value="6788" />
           <entry key="txt" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="17" />
-          <entry key="Python" value="6831" />
+          <entry key="Python" value="6879" />
         </counts>
       </usages-collector>
     </session>
@@ -74,8 +75,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gecosistema_core/execution.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="124" column="7" lean-forward="true" selection-start-line="124" selection-start-column="7" selection-end-line="124" selection-end-column="7" />
+            <state relative-caret-position="414">
+              <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
               <folding>
                 <element signature="e#943#961#0" expanded="true" />
               </folding>
@@ -510,8 +511,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gecosistema_core/execution.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="124" column="7" lean-forward="true" selection-start-line="124" selection-start-column="7" selection-end-line="124" selection-end-column="7" />
+        <state relative-caret-position="414">
+          <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
           <folding>
             <element signature="e#943#961#0" expanded="true" />
           </folding>
