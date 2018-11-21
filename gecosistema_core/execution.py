@@ -73,7 +73,8 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
             outdata = p.communicate()
         else:
             try:
-                subprocess.call(args, shell=False)
+                #subprocess.call(args, shell=False)
+                outdata = subprocess.check_output(command, stderr=subprocess.STDOUT).decode()
 
             except Exception as ex:
                 if verbose:
