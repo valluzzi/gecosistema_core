@@ -48,7 +48,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
                 command = sformat(command, env)
                 print("Post conditions already fulfilled for %s[...]!" % command[:12])
                 print("Done in %ss." % ((t2 - t1).total_seconds()))
-            return True if outputmode="boolean" else {"success":True}
+            return True if outputmode=="boolean" else {"success":True}
 
     res = True
     # check pre conditions (file existence)
@@ -78,7 +78,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
             except Exception as ex:
                 if verbose:
                     print(ex)
-                    return False if outputmode="boolean" else {"success":False,"exception":""+ex}
+                    return False if outputmode=="boolean" else {"success":False,"exception":""+ex}
 
     # check post conditions
     for filename in listify(postcond):
@@ -96,7 +96,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
     t2 = datetime.datetime.now()
     if verbose:
         print("Done in %ss." % ((t2 - t1).total_seconds()))
-    return res if outputmode="boolean" else {"success":res,"data":outdata}
+    return res if outputmode=="boolean" else {"success":res,"data":outdata}
 
 def EXEC(command):
     """
