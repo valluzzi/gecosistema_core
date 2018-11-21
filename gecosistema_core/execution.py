@@ -74,18 +74,18 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
         else:
             try:
                 #subprocess.call(args, shell=False)
-                outdata = subprocess.check_output(command, stderr=subprocess.STDOUT).decode()
+                outdata = subprocess.check_output(command, stderr=subprocess.STDOUT).decode('utf-8')
                 print("outdata:")
                 print(outdata)
                 print("-----")
                 if "[" in outdata or "{" in outdata:
                     outdata = json.loads(outdata)
 
-            except Exception as ex:
+            except subprocess.CalledProcessError as e:
                 if outputmode=="boolean":
                     return False
                 else:
-                    return {"success":False,"exception":""+ex}
+                    return {"success":False,"exception":""+e.output, "returncode":e.returncode}
 
     # check post conditions
     for filename in listify(postcond):
