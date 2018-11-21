@@ -74,9 +74,10 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
         else:
             try:
                 #subprocess.call(args, shell=False)
-                outdata = subprocess.check_output(command, stderr=subprocess.STDOUT).decode('utf-8')
-                if "[" in outdata or "{" in outdata:
-                    outdata = ast.literal_eval(outdata)
+                with open(os.devnull, 'w') as devnull:
+                    outdata = subprocess.check_output(command, stderr=devnull).decode('utf-8')
+                    if "[" in outdata or "{" in outdata:
+                        outdata = ast.literal_eval(outdata)
 
             except subprocess.CalledProcessError as e:
                 if outputmode=="boolean":
