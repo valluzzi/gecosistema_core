@@ -34,6 +34,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
     """
     t1 = datetime.datetime.now()
     res = True
+    outdata = False
 
     if skipIfExists:
         # check post conditions
@@ -47,7 +48,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
                 command = sformat(command, env)
                 print("Post conditions already fulfilled for %s[...]!" % command[:12])
                 print("Done in %ss." % ((t2 - t1).total_seconds()))
-            return res
+            return True if outputmode="boolean" else {"success":True}
 
     res = True
     # check pre conditions (file existence)
@@ -69,7 +70,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
             args = listify(command, " ", '"')
         if nowait:
             p = subprocess.Popen(args, stdout=subprocess.PIPE)
-            res = p.communicate()
+            outdata = p.communicate()
         else:
             try:
                 subprocess.call(args, shell=False)
@@ -77,7 +78,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
             except Exception as ex:
                 if verbose:
                     print(ex)
-                    return False
+                    return False if outputmode="boolean" else {"success":False,"exception":""+ex}
 
     # check post conditions
     for filename in listify(postcond):
@@ -95,7 +96,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
     t2 = datetime.datetime.now()
     if verbose:
         print("Done in %ss." % ((t2 - t1).total_seconds()))
-    return res
+    return res if outputmode="boolean" else {"success":res,"data":outdata}
 
 def EXEC(command):
     """
