@@ -91,6 +91,27 @@ def strftime(frmt, text):
 
     return ""
 
+def today():
+    """
+    today
+    """
+    d = datetime.datetime.today()
+    return datetime.date(d.year,d.month,d.day)
+
+def yesterday(Date=None,N=1):
+    """
+    yesterday
+    """
+    Date = ctod() if not Date else ctod(Date)
+    return Date - datetime.timedelta(days=N)
+
+def tomorrow(Date=None,N=1):
+    """
+    tomorrow
+    """
+    Date = ctod() if not Date else ctod(Date)
+    return Date + datetime.timedelta(days=N)
+
 def month_diff(dateA,dateB):
     """
     month_diff - Month difference
