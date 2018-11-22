@@ -209,9 +209,9 @@ def textbetween(text, prefix, postfix, casesensitive=True):
     textin - return text between prefix and suffix excluded
     """
     if casesensitive:
-        g = re.search(r'' + prefix + '(.*?)' + postfix, text)
+        g = re.search(r'' + prefix + '(.*?)' + postfix, text, re.DOTALL)
     else:
-        g = re.search(r'' + prefix + '(.*?)' + postfix, text, re.IGNORECASE)
+        g = re.search(r'' + prefix + '(.*?)' + postfix, text, re.IGNORECASE|re.DOTALL)
 
     return g.group() if g else ""
 
