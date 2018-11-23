@@ -140,7 +140,6 @@ def loadlibs(dirnames,type="js"):
         for filename in filenames:
             DOCUMENT_ROOT = leftpart(normpath(filename), "/lib/")
             filever = DOCUMENT_ROOT+"/lib/js/core/version.js"
-            print filever
             version = filetostr(filever)
             if version:
                 version = version.replace("__VERSION__=","").strip("'\"\t ;")
