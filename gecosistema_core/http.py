@@ -138,14 +138,15 @@ def loadlibs(dirnames,type="js"):
     for dirname in dirnames:
         filenames = ls(dirname, r'.*\.%s$'%(type), recursive=True)
         for filename in filenames:
-            webname = rightpart(normpath(filename), "/lib/")
-            if webname:
-                filename = "/lib/" + rightpart(normpath(filename), "/lib/")
-                if filename != '/':
-                    if   type=="js":
-                        text += sformat("<script type='text/javascript' src='{filename}'></script>\n", {"filename": filename});
-                    elif type=="css":
-                        text += sformat("<link href='{filename}' rel='stylesheet' type='text/css'/>\n",{"filename": filename});
+            DOCUMENT_ROOT = leftpart(normpath(filename), "/lib/")
+            filever = DOCUMENT_ROOT+"/lib/js/core/version.js"
+            version = filetostr(filever).replace("__VERSION__=","").strip("'\"\t ;")
+            webname = "/lib/" + rightpart(normpath(filename), "/lib/")
+            if webname and webname != '/lib/':
+                if   type=="js":
+                    text += sformat("<script type='text/javascript' src='{filename}'></script>\n", {"filename": webname,"version":version});
+                elif type=="css":
+                    text += sformat("<link href='{filename}' rel='stylesheet' type='text/css'/>\n",{"filename": webname,"version":version});
 
     return text
 

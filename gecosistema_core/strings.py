@@ -212,7 +212,6 @@ def textbetween(text, prefix, postfix, casesensitive=True):
         g = re.search(r'' + prefix + '(.*?)' + postfix, text, re.DOTALL)
     else:
         g = re.search(r'' + prefix + '(.*?)' + postfix, text, re.IGNORECASE|re.DOTALL)
-
     return g.group() if g else ""
 
 def normalizestring(text):
