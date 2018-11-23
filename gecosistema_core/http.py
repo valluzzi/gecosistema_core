@@ -144,9 +144,9 @@ def loadlibs(dirnames,type="js"):
             webname = "/lib/" + rightpart(normpath(filename), "/lib/")
             if webname and webname != '/lib/':
                 if   type=="js":
-                    text += sformat("<script type='text/javascript' src='{filename}'></script>\n", {"filename": webname,"version":version});
+                    text += sformat("<script type='text/javascript' src='{filename}?v={version}'></script>\n", {"filename": webname,"version":version});
                 elif type=="css":
-                    text += sformat("<link href='{filename}' rel='stylesheet' type='text/css'/>\n",{"filename": webname,"version":version});
+                    text += sformat("<link href='{filename}?v={version}' rel='stylesheet' type='text/css'/>\n",{"filename": webname,"version":version});
 
     return text
 
