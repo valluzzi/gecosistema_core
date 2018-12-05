@@ -40,7 +40,7 @@ def MSE(s,o):
     o - array of observations (or targets)
     """
     s, o = np.array(s), np.array(o)
-    return ( np.nansum( np.power(s-o,2) ))/ len(o)
+    return np.nanmean((s-o)**2)
 
 def RMSE(s,o):
     """
@@ -49,7 +49,7 @@ def RMSE(s,o):
     o - array of observations (or targets)
     """
     s, o = np.array(s), np.array(o)
-    return np.sqrt( np.nansum( np.power(s-o,2) )/ len(o))
+    return np.sqrt( np.nanmean((s-o)**2) )
 
 def NASH(s,o):
     """
