@@ -159,3 +159,17 @@ def next_period(date, n=1):
     for j in range(n):
         date += datetime.timedelta(days=days_of_month(date))
     return strftime("%Y%m",date)
+
+def season(date):
+    """
+    season
+    """
+    mmdd = strftime("%m-%d", date)
+    if mmdd >= "03-21" and  mmdd < "06-21":
+        return "spring"
+    elif mmdd >= "06-21" and  mmdd < "09-23":
+        return "summer"
+    elif mmdd >= "09-23" and mmdd < "12-21":
+        return "autumn"
+    else:
+        return "winter"
