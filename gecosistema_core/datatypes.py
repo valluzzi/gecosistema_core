@@ -170,6 +170,23 @@ def parseValue(value, nodata=("", "Na", "NaN", "-", "--", "N/A")):
         return [parseValue(item) for item in value]
     return value
 
+def parseColor(text):
+    """
+    parseColor
+    """
+    if text.startswith("#"):
+        return text
+    elif isstring(text) and "," in text:
+        rgb = listify(text,",")
+        rgb = [int(n) for n in rgb]
+        return "#%02x%02x%02x" % (tuple(rgb[:3]))
+    elif isstring(text) and " " in text:
+        rgb = listify(text," ")
+        rgb = [int(n) for n in rgb]
+        return "#%02x%02x%02x" % (tuple(rgb[:3]))
+    return text
+
+
 def mapify(text, sep=",", kvsep="=", strip_char=" ", glue= "\"", parsing=False):
     """
     Growup a dictionary from text string
