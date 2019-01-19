@@ -121,6 +121,8 @@ def Python(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=Fal
         strtofile(command,filetmp)
         command = filetmp
 
+    if verbose:
+        print(PYTHON_HOME + "python " +command)
     return Exec(PYTHON_HOME + "python " + command, env, precond, postcond, remove=[filetmp], skipIfExists=skipIfExists, nowait=False, verbose=verbose, outputmode=outputmode)
 
 def Python36(command):

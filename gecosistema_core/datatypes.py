@@ -179,7 +179,11 @@ def mapify(text, sep=",", kvsep="=", strip_char=" ", glue= "\"", parsing=False):
     res = {}
     for item in items:
         item = item.strip(strip_char)
-        key, value = item.split(kvsep, 1)
+        arr = item.split(kvsep, 1)
+        if len(arr)==1:
+            key, value = arr[0], ""
+        elif len(arr)==2:
+            key, value = arr
         key, value = key.strip(strip_char).strip(glue), value.strip(strip_char).strip(glue)
 
         if parsing:
