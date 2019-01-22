@@ -161,7 +161,7 @@ def filectime(filename):
     else:
         return None
 
-def template(filetpl, fileout, env)
+def template(filetpl, fileout, env):
     """
     template - create a file from template 
     """
