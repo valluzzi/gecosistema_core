@@ -266,7 +266,7 @@ def htmlResponse(environ, start_response=None, checkuser=False):
     HTTP_COOKIE   = environ["HTTP_COOKIE"]   if "HTTP_COOKIE"   in environ else ""
     print HTTP_COOKIE
 
-    if not file(url):
+    if not isfile(url):
         return httpResponseNotFound(start_response)
 
     workdir    = justpath(url)
@@ -288,6 +288,7 @@ def htmlResponse(environ, start_response=None, checkuser=False):
     variables = {
         "loadjs":  loadlibs(jss,"js"),
         "loadcss": loadlibs(csss,"css"),
+        "APPNAME": juststem(workdir),
         "os": os,
         "math": math,
         "gecosistema_core": gecosistema_core,
