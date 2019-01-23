@@ -308,17 +308,15 @@ def check_user_permissions(environ):
 
     if file(filedb):
         HTTP_COOKIE = mapify(HTTP_COOKIE, ";")
-
-
         conn = sqlite3.connect(filedb)
         conn.create_function("md5", 1, md5text)
         c = conn.cursor()
         sql = """SELECT COUNT(*) FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now'));"""
         sql = sformat(sql,HTTP_COOKIE)
         c.execute(sql)
-        user_enabled = c.fetchone()
-        print user_enabled
+        (user_enabled,) = c.fetchone()
         conn.close()
+        return True if user_enabled else False
 
         #db = SqliteDB(filedb, modules=["math.so"])
         #user_enabled = db.execute("""
