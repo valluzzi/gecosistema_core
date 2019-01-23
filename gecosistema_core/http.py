@@ -299,20 +299,20 @@ def check_user_permissions(environ):
     check_user_permissions
     """
     DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else leftpart(normpath(__file__), "/apps/")
-    filedb = DOCUMENT_ROOT + "/projects/htaccess.txt"
+    filedb = DOCUMENT_ROOT + "/projects/htaccess.sqlite"
     HTTP_COOKIE = environ["HTTP_COOKIE"] if "HTTP_COOKIE" in environ else ""
 
     if file(filedb):
         HTTP_COOKIE = mapify(HTTP_COOKIE, ";")
-        #db = SqliteDB(filedb, modules=["math.so"])
-        #user_enabled = db.execute("""
-        #    SELECT COUNT(*) FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now'));
-        #    """, HTTP_COOKIE, outputmode="scalar", verbose=False)
-        #db.close()
-        db = parsejson(filedb)
-        users = db["users"]
-        for user in users:
-            if md5text("%s%s"%(user["token"],strftime('%Y-%m-%d','now'))) == lower(HTTP_COOKIE["__token__"]):
-                return True
+        db = SqliteDB(filedb, modules=["math.so"])
+        user_enabled = db.execute("""
+        SELECT COUNT(*) FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now'));
+        """, HTTP_COOKIE, outputmode="scalar", verbose=False)
+        db.close()
+        #db = parsejson(filedb)
+        #users = db["users"]
+        #for user in users:
+        #    if md5text("%s%s"%(user["token"],strftime('%Y-%m-%d','now'))) == lower(HTTP_COOKIE["__token__"]):
+        #        return True
 
     return False
