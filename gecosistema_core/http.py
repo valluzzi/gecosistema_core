@@ -304,7 +304,7 @@ def check_user_permissions(environ):
     check_user_permissions
     """
     DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else leftpart(normpath(__file__), "/apps/")
-    filedb = DOCUMENT_ROOT + "/projects/htaccess.sqlite"
+    filedb = DOCUMENT_ROOT + "/htaccess.sqlite"
     HTTP_COOKIE = environ["HTTP_COOKIE"] if "HTTP_COOKIE" in environ else ""
 
     if file(filedb):
