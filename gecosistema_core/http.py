@@ -261,7 +261,8 @@ def htmlResponse(environ, start_response=None, checkuser=False):
     print url
 
     DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else ""
-    #HTTP_COOKIE   = environ["HTTP_COOKIE"]   if "HTTP_COOKIE"   in environ else ""
+    HTTP_COOKIE   = environ["HTTP_COOKIE"]   if "HTTP_COOKIE"   in environ else ""
+    print HTTP_COOKIE
 
     if not file(url):
         return httpResponseNotFound(start_response)
