@@ -315,4 +315,4 @@ def check_user_permissions(environ):
         #    if md5text("%s%s"%(user["token"],strftime('%Y-%m-%d','now'))) == lower(HTTP_COOKIE["__token__"]):
         #        return True
 
-    return False
+    return False 
