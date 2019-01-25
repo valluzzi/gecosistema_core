@@ -206,7 +206,7 @@ def getCookies(environ):
     getCookies
     """
     HTTP_COOKIE = environ["HTTP_COOKIE"] if "HTTP_COOKIE" in environ else ""
-    return mapify(environ["HTTP_COOKIE"],";")
+    return mapify(HTTP_COOKIE,";")
 
 def httpPage(environ, start_response=None, checkuser=False):
     """
