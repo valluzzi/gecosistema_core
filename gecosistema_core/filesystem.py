@@ -161,13 +161,13 @@ def filectime(filename):
     else:
         return None
 
-def template(filetpl, fileout, env):
-    """
-    template - create a file from template 
-    """
-    text = filetostr(filetpl)
-    text = sformat(text,env)
-    return strtofile(text, fileout)
+#def template(filetpl, fileout, env):
+#    """
+#    template - create a file from template
+#    """
+#    text = filetostr(filetpl)
+#    text = sformat(text,env)
+#    return strtofile(text, fileout)
 
 def tempdir():
     """

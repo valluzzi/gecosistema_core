@@ -154,10 +154,11 @@ def loadlibs(dirnames,type="js"):
 
     return text
 
-def template(filetpl, env, fileout=None):
+def template(filetpl, fileout=None, env = None):
     """
     template -  generate text from jinja2 template file
     """
+    env = enf if env else {}
     workdir = justpath(filetpl)
     workdir = workdir if workdir else "."
     environ = Environment(loader=FileSystemLoader(workdir))
