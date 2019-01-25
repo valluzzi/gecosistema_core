@@ -201,6 +201,13 @@ def JSONResponse(obj, start_response):
         res = obj
     return httpResponse(res, "200 OK", start_response)
 
+def getCookies(environ):
+    """
+    getCookies
+    """
+    HTTP_COOKIE = environ["HTTP_COOKIE"] if "HTTP_COOKIE" in environ else ""
+    return mapify(environ["HTTP_COOKIE"],";")
+
 def httpPage(environ, start_response=None, checkuser=False):
     """
     httpPage - return a Html Page
@@ -305,10 +312,9 @@ def check_user_permissions(environ):
     """
     DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else leftpart(normpath(__file__), "/apps/")
     filedb = DOCUMENT_ROOT + "/htaccess.sqlite"
-    HTTP_COOKIE = environ["HTTP_COOKIE"] if "HTTP_COOKIE" in environ else ""
+    HTTP_COOKIE = getCookies(environ)
 
-    if file(filedb):
-        HTTP_COOKIE = mapify(HTTP_COOKIE, ";")
+    if file(filedb) and "__token__" in HTTP_COOKIE:
         conn = sqlite3.connect(filedb)
         conn.create_function("md5", 1, md5text)
         c = conn.cursor()
@@ -318,16 +324,5 @@ def check_user_permissions(environ):
         (user_enabled,) = c.fetchone()
         conn.close()
         return True if user_enabled else False
-
-        #db = SqliteDB(filedb, modules=["math.so"])
-        #user_enabled = db.execute("""
-        #SELECT COUNT(*) FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now'));
-        #""", HTTP_COOKIE, outputmode="scalar", verbose=False)
-        #db.close()
-        #db = parsejson(filedb)
-        #users = db["users"]
-        #for user in users:
-        #    if md5text("%s%s"%(user["token"],strftime('%Y-%m-%d','now'))) == lower(HTTP_COOKIE["__token__"]):
-        #        return True
 
     return False 
