@@ -158,7 +158,7 @@ def template(filetpl, fileout=None, env = None):
     """
     template -  generate text from jinja2 template file
     """
-    env = enf if env else {}
+    env = env if env else {}
     workdir = justpath(filetpl)
     workdir = workdir if workdir else "."
     environ = Environment(loader=FileSystemLoader(workdir))
