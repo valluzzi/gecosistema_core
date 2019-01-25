@@ -270,8 +270,7 @@ def htmlResponse(environ, start_response=None, checkuser=False):
     print url
 
     DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else ""
-    HTTP_COOKIE   = environ["HTTP_COOKIE"]   if "HTTP_COOKIE"   in environ else ""
-    print HTTP_COOKIE
+    #HTTP_COOKIE   = getCookies(environ)
 
     if not isfile(url):
         return httpResponseNotFound(start_response)
@@ -318,11 +317,11 @@ def check_user_permissions(environ):
         conn = sqlite3.connect(filedb)
         conn.create_function("md5", 1, md5text)
         c = conn.cursor()
-        sql = """SELECT COUNT(*) FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now'));"""
+        sql = """SELECT COUNT(*),[mail] FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now'));"""
         sql = sformat(sql,HTTP_COOKIE)
         c.execute(sql)
-        (user_enabled,) = c.fetchone()
+        (user_enabled,mail) = c.fetchone()
         conn.close()
-        return True if user_enabled else False
+        return mail if user_enabled else False
 
     return False 
