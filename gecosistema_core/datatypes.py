@@ -180,12 +180,12 @@ def parseColor(text):
         rgb = listify(text,",")
         rgb = [int(j) for j in rgb]
         n = len(rgb)
-        return "#%02x%02x%02x" % (tuple(rgb[:n]))
+        return ("#%02x"*n) % (tuple(rgb[:n]))
     elif isstring(text) and " " in text:
         rgb = listify(text," ")
         rgb = [int(j) for j in rgb]
         n = len(rgb)
-        return "#%02x%02x%02x" % (tuple(rgb[:n]))
+        return ("#%02x" * n) % (tuple(rgb[:n]))
     return text
 
 
