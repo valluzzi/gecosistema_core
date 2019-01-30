@@ -179,7 +179,7 @@ def tempfname(prefix="",postfix="",ext=""):
     """
     tempfname - return the name of temporary file
     """
-    return tempfile.gettempdir()+"/"+tempname(prefix,postfix,ext)
+    return normpath(tempfile.gettempdir())+"/"+tempname(prefix,postfix,ext)
 
 def rename(filesrc, filedest, overwrite=True):
     """
