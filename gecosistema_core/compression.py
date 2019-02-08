@@ -69,4 +69,57 @@ def compress(filenames, filezip="", removesrc=False):
     return False
 
 
+def uncompress(filename, directory="", removeSrc=False):
+    """
+    uncompress
+    """
+    directory = justpath(filename) if len(directory) == 0 else directory
+    res = []
+    if os.path.isfile(filename):
+        sourceZip = None
+        mkdirs(directory)
+        ext = justext(filename).lower()
 
+        if ext in ("zip", "kmz", "qgz"):
+            try:
+                sourceZip = zipfile.ZipFile(filename, 'r')
+                for name in sourceZip.namelist():
+                    sourceZip.extract(name, directory)
+                res = sourceZip.namelist()
+            except:
+                pass
+
+        elif ext == "rar":
+
+            try:
+                # rarfile.PATH_SEP = '/'
+                # rarfile.UNRAR_TOOL = "c:/Program Files/winrar/unrar.exe"
+                sourceZip = rarfile.RarFile(filename)
+                sourceZip.extractall(path=directory)
+                res = sourceZip.namelist()
+            except Exception as e:
+                print(e)
+
+        elif ext == "bz2":
+
+            try:
+                BUFFERSIZE = 1024 * 1024
+                fileout = forceext(filename, "")
+                with open(fileout, 'wb') as new_file, bz2.BZ2File(filename, 'rb') as file:
+                    for data in iter(lambda: file.read(BUFFERSIZE), b''):
+                        new_file.write(data)
+                res = [fileout]
+            except Exception as e:
+                print(e)
+
+        elif ext == "tgz":
+            try:
+                sourceZip = tarfile.open(filename, 'r:*')
+                sourceZip.extractall(path=directory)
+                res = sourceZip.getmembers()
+            except Exception as e:
+                print(e)
+
+        if removeSrc:
+            remove(filename)
+        return res
