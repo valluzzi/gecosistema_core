@@ -46,7 +46,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
             t2 = datetime.datetime.now()
             if verbose:
                 command = sformat(command, env)
-                print("Post conditions already fulfilled for %s[...]!" % command[:12])
+                print("Post conditions already fulfilled for %s[...]!" % command[:80])
                 print("Done in %ss." % ((t2 - t1).total_seconds()))
             return True if outputmode=="boolean" else {"success":True}
 
@@ -81,6 +81,7 @@ def Exec(command, env={}, precond=[], postcond=[], remove=[], skipIfExists=False
                             outdata = ast.literal_eval(outdata)
 
             except subprocess.CalledProcessError as e:
+                print("Exec:",e)
                 if outputmode=="boolean":
                     return False
                 else:
