@@ -263,7 +263,7 @@ def htmlResponse(environ, start_response=None, checkuser=False):
     """
 
     if checkuser and not check_user_permissions(environ):
-        environ["url"] = "back.html"
+        environ["url"] = normpath(environ["SCRIPT_FILENAME"])+"/back.html"
         return htmlResponse(environ, start_response)
 
     url = environ["url"] if "url" in environ else normpath(environ["SCRIPT_FILENAME"])
