@@ -326,9 +326,10 @@ def check_user_permissions(environ):
         c = conn.cursor()
         if "__token__" in HTTP_COOKIE:
             sql = """SELECT COUNT(*),[mail] FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now')) AND [enabled];"""
+            sql = sformat(sql, HTTP_COOKIE)
         else:
-            sql = """SELECT COUNT(*),[mail] FROM [users] WHERE [mail] LIKE 'everyone' LIMIT 1;"""
-        sql = sformat(sql,HTTP_COOKIE)
+            sql = """SELECT COUNT(*),[mail] FROM [users] WHERE [mail] LIKE 'everyone';"""
+
         c.execute(sql)
         (user_enabled,mail) = c.fetchone()
         conn.close()

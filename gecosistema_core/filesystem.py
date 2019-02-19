@@ -351,10 +351,11 @@ def md5text(text):
     """
     md5text - Returns the md5 of the text
     """
-    hash = hashlib.md5()
-    hash.update(text)
-    return hash.hexdigest()
-
+    if (text!=None):
+        hash = hashlib.md5()
+        hash.update(text)
+        return hash.hexdigest()
+    return None
 
 def filehaschanged(filename, filemd5="", updatemd5=False):
     """
