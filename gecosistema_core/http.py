@@ -320,11 +320,14 @@ def check_user_permissions(environ):
 
     HTTP_COOKIE = getCookies(environ)
 
-    if file(filedb) and "__token__" in HTTP_COOKIE:
+    if file(filedb):
         conn = sqlite3.connect(filedb)
         conn.create_function("md5", 1, md5text)
         c = conn.cursor()
-        sql = """SELECT COUNT(*),[mail] FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now'));"""
+        if "__token__" in HTTP_COOKIE:
+            sql = """SELECT COUNT(*),[mail] FROM [users] WHERE '{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now')) AND [enabled];"""
+        else:
+            sql = """SELECT COUNT(*),[mail] FROM [users] WHERE [mail] LIKE 'everyone' LIMIT 1;"""
         sql = sformat(sql,HTTP_COOKIE)
         c.execute(sql)
         (user_enabled,mail) = c.fetchone()
