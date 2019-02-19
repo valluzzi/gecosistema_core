@@ -268,6 +268,7 @@ def htmlResponse(environ, start_response=None, checkuser=False):
 
     url = environ["url"] if "url" in environ else normpath(environ["SCRIPT_FILENAME"])
     url = forceext(url, "html")
+    print(url)
 
     DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else ""
     #HTTP_COOKIE   = getCookies(environ)
