@@ -309,7 +309,7 @@ def check_user_permissions(environ):
     """
     check_user_permissions
     """
-    url = environ["url"] if "url" in environ else normpath(environ["SCRIPT_FILENAME"])
+    url = normpath(environ["SCRIPT_FILENAME"])
     filedb = justpath(url) + "/htaccess.sqlite"
     if not isfile(filedb):
         DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else leftpart(normpath(__file__), "/apps/")
