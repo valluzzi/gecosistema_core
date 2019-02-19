@@ -268,7 +268,6 @@ def htmlResponse(environ, start_response=None, checkuser=False):
 
     url = environ["url"] if "url" in environ else normpath(environ["SCRIPT_FILENAME"])
     url = forceext(url, "html")
-    print url
 
     DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else ""
     #HTTP_COOKIE   = getCookies(environ)
@@ -310,8 +309,12 @@ def check_user_permissions(environ):
     """
     check_user_permissions
     """
-    DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else leftpart(normpath(__file__), "/apps/")
-    filedb = DOCUMENT_ROOT + "/htaccess.sqlite"
+    url = environ["url"] if "url" in environ else normpath(environ["SCRIPT_FILENAME"])
+    filedb = justpath(url) + "/htaccess.sqlite"
+    if not isfile(filedb):
+        DOCUMENT_ROOT = environ["DOCUMENT_ROOT"] if "DOCUMENT_ROOT" in environ else leftpart(normpath(__file__), "/apps/")
+        filedb = DOCUMENT_ROOT + "/htaccess.sqlite"
+
     HTTP_COOKIE = getCookies(environ)
 
     if file(filedb) and "__token__" in HTTP_COOKIE:
