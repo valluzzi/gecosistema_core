@@ -329,7 +329,7 @@ def check_user_permissions(environ):
         sql = """
         SELECT COUNT(*),[mail] FROM [users] 
         WHERE ('{__token__}' LIKE md5([token]||strftime('%Y-%m-%d','now')) AND [enabled])
-                OR ([mail] LIKE 'everyone' AND [enabled];"""
+                OR ([mail] LIKE 'everyone' AND [enabled]);"""
         sql = sformat(sql, HTTP_COOKIE)
 
         c.execute(sql)
