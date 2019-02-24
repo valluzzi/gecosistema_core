@@ -40,13 +40,19 @@ def isfile(pathname):
     """
     isfile -  alias for file
     """
-    return file(pathname)
+    return os.path.isfile(pathname) if pathname else False
 
 def directory(pathname):
     """
     directory - True se pathname e'  una cartella
     """
     return os.path.isdir(pathname) if pathname else False
+
+def exists(pathname):
+    """
+    exists - True se pathname is file or directory
+    """
+    return os.path.isfile(pathname) or os.path.isdir(pathname) if pathname else False
 
 def normpath(pathname):
     """
@@ -69,6 +75,8 @@ def justpath(pathname, n=1):
     """
     for j in range(n):
         (pathname, _) = os.path.split(normpath(pathname))
+    if pathname=="":
+        return "."
     return normpath(pathname)
 
 def justfname(pathname):
