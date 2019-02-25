@@ -82,7 +82,7 @@ def strftime(frmt, text):
     strftime
     """
     if not text:
-        return datetime.datetime.now()
+        return datetime.datetime.now().strftime(frmt)
     elif isinstance(text, (datetime.datetime,datetime.date,) ):
         return text.strftime(frmt)
     elif isstring(text):
