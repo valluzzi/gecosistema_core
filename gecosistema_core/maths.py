@@ -23,6 +23,13 @@
 # Created:     10/10/2018
 # -------------------------------------------------------------------------------
 import numpy as np
+import random
+
+def randint(n):
+    """
+    randint
+    """
+    return random.randint(0,n)
 
 def M(s,o):
     """
