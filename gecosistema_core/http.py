@@ -27,7 +27,7 @@ from .strings import *
 from .datatypes import *
 from jinja2 import Environment, FileSystemLoader
 import os,sys,math
-import json,base64
+import json,base64, urllib
 from cgi import FieldStorage
 from builtins import str as unicode
 import sqlite3
@@ -42,11 +42,13 @@ class Form:
             self.form = {}
             for key in form:
                 value = form.getvalue(key)
+                value = urllib.unquote(value).decode('utf8')
                 self.form[key] = value
         except:
             _environ = {}
             for key in environ:
                 value = environ[key]
+                value = urllib.unquote(value).decode('utf8')
                 _environ[key] = value
             self.form = _environ
 
