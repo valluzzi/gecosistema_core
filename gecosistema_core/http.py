@@ -32,6 +32,14 @@ from cgi import FieldStorage
 from builtins import str as unicode
 import sqlite3
 
+
+def urlencode(s):
+    return urllib.quote(s)
+
+def urldecode(s):
+    return urllib.unquote(s).decode('utf8')
+
+
 class Form:
     """
     Form
