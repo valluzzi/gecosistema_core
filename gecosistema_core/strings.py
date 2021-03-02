@@ -300,8 +300,11 @@ def listify(text, sep=",", glue="\""):
         return text
     return [text]
 
-
-
+def replaceAll(text, search, replace):
+    """
+    replaceAll
+    """
+    return re.sub(text, search, replace )
 
 
 def val(text):
