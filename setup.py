@@ -1,20 +1,9 @@
 import os
 import setuptools
 
-version ="0.0.0"
+version ="0.0.201"
 
-if os.path.isfile("version.txt"):
-    with open("version.txt", "r") as f:
-        version = f.read()
-        if version:
-            versionno = version.split("=")[-1].strip("' ")
-            arr = [int(item) for item in versionno.split(".")]
-            arr[2] += 1
-            version = "%d.%d.%d" % tuple(arr)
-            with open("version.txt", "w") as w:
-                w.write(version)
-
-setuptools.setup(
+seuptools.setup(
     name="gecosistema_core",
     version=version,
     author="Valerio Luzzi",
